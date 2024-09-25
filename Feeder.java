@@ -5,7 +5,7 @@ public class Feeder {
      * The amount of food, in grams, currently in the bird feeder; initialized
      * in the constructor and always greater than or equal to zero
      */
-    public int currentFood;
+    private int currentFood;
 
     /**
      * Simulates one day with numBirds birds or possibly a bear at the bird
@@ -19,7 +19,7 @@ public class Feeder {
         currentFood = c;
     }
 
-    public void simulateOneDay(int numBirds) {
+    public int simulateOneDay(int numBirds) {
         if (Math.random() <= 0.05) {
             currentFood = 0;
 
@@ -27,7 +27,7 @@ public class Feeder {
             currentFood -= (int) (Math.random() * 40 + 10) * numBirds;
 
         }
-
+        return currentFood;
     }
 
     /**
@@ -46,7 +46,13 @@ public class Feeder {
 
             }
         }
+        if(currentFood <= 0)  {
+            currentFood = 0;
+            return currentFood;
+        }
+        return currentFood;
     }
+
 
 
 }
